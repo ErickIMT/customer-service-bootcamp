@@ -1,7 +1,6 @@
-package com.nttdata.customerservice.model.service;
+package com.nttdata.customerservice.infrastructure.data.service;
 
-import com.nttdata.customerservice.model.document.Customer;
-import com.nttdata.customerservice.model.document.CustomerType;
+import com.nttdata.customerservice.infrastructure.data.document.CustomerType;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -12,4 +11,5 @@ public interface CustomerTypeService {
     Mono<CustomerType> update(CustomerType customerType);
     void delete(String id);
     Mono<CustomerType> getCustomerType(String id);
+
 }

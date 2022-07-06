@@ -1,4 +1,4 @@
-package com.nttdata.customerservice.model.document;
+package com.nttdata.customerservice.infrastructure.data.document;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,10 +11,17 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document("customer_types")
-public class CustomerType {
+@Document(collection = "customers")
+public class Customer {
 
     @Id
     private String id;
     private String name;
+    private String lastName;
+    private String document;
+    private String address;
+    private String email;
+    private String phone;
+    private CustomerType customerType;
+
 }

@@ -1,9 +1,9 @@
-package com.nttdata.customerservice.api;
+package com.nttdata.customerservice.application.api;
 
-import com.nttdata.customerservice.model.document.Customer;
-import com.nttdata.customerservice.model.document.CustomerType;
-import com.nttdata.customerservice.model.service.CustomerService;
-import com.nttdata.customerservice.model.service.CustomerTypeService;
+import com.nttdata.customerservice.infrastructure.data.document.Customer;
+import com.nttdata.customerservice.infrastructure.data.document.CustomerType;
+import com.nttdata.customerservice.infrastructure.data.service.CustomerService;
+import com.nttdata.customerservice.infrastructure.data.service.CustomerTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;

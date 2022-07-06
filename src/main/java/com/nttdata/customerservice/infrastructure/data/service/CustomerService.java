@@ -1,7 +1,6 @@
-package com.nttdata.customerservice.model.service;
+package com.nttdata.customerservice.infrastructure.data.service;
 
-import com.nttdata.customerservice.model.document.Customer;
-import org.springframework.web.bind.annotation.RequestBody;
+import com.nttdata.customerservice.infrastructure.data.document.Customer;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

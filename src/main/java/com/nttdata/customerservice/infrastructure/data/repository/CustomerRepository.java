@@ -1,6 +1,6 @@
-package com.nttdata.customerservice.model.repository;
+package com.nttdata.customerservice.infrastructure.data.repository;
 
-import com.nttdata.customerservice.model.document.Customer;
+import com.nttdata.customerservice.infrastructure.data.document.Customer;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
 

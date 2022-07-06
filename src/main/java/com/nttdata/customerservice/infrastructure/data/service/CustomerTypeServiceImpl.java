@@ -1,7 +1,7 @@
-package com.nttdata.customerservice.model.service;
+package com.nttdata.customerservice.infrastructure.data.service;
 
-import com.nttdata.customerservice.model.document.CustomerType;
-import com.nttdata.customerservice.model.repository.CustomerTypeRepository;
+import com.nttdata.customerservice.infrastructure.data.document.CustomerType;
+import com.nttdata.customerservice.infrastructure.data.repository.CustomerTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -43,4 +43,6 @@ public class CustomerTypeServiceImpl implements CustomerTypeService{
     public Mono<CustomerType> getCustomerType(String id) {
         return customerTypeRepository.findById(id);
     }
+
+
 }
