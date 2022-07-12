@@ -1,10 +1,13 @@
 package com.nttdata.customerservice.infrastructure.data.service;
 
+import com.nttdata.customerservice.application.config.CacheConfig;
 import com.nttdata.customerservice.infrastructure.data.document.Customer;
 import com.nttdata.customerservice.infrastructure.data.repository.CustomerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -21,10 +24,14 @@ public class CustomerServiceImpl implements CustomerService {
   @Autowired
   private CustomerTypeService customerTypeService;
 
+  @Autowired
+  private CustomerEventsService customerEventsService;
+
   @Override
   public Mono<Customer> create(Customer customer) {
     LOGGER.info("GUARDANDO CLIENTE : \n"
         + "NOMBRE: " + customer.getName());
+    customerEventsService.publish(customer);
     return customerRepository.save(customer);
   }
 
@@ -37,6 +44,7 @@ public class CustomerServiceImpl implements CustomerService {
         .map(this::setTypeOnCustomer);
   }
 
+  @CachePut(cacheNames = CacheConfig.CUSTOMER_CACHE, key = "#id", unless = "#result == null")
   @Override
   public Mono<Customer> update(Customer customer) {
     LOGGER.info("Iniciando Actualizacion de Cliente");
@@ -59,6 +67,7 @@ public class CustomerServiceImpl implements CustomerService {
 
   }
 
+  @Cacheable(cacheNames = CacheConfig.CUSTOMER_CACHE, unless = "#result == null")
   @Override
   public Mono<Customer> getCustomer(String id) {
     LOGGER.info("Buscando Cliente por Id");
